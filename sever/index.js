@@ -12,6 +12,18 @@ mongoose.connect(
   "mongodb+srv://firstapp:FirstApp1@cluster0.qpkk5om.mongodb.net/mern?retryWrites=true&w=majority"
 );
 
+
+app.get("/", async (req, res) => {
+  try {
+    return "hello"
+  } catch (err) {
+    res.json(err);
+  }
+  console.log("HELLO")
+});
+
+
+
 app.get("/getBigTasks", async (req, res) => {
   try {
     const response = await BigTaskModel.find({});
