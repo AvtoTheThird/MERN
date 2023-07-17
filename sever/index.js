@@ -19,6 +19,7 @@ app.get("/getBigTasks", async (req, res) => {
   } catch (err) {
     res.json(err);
   }
+  console.log("getBigTasks")
 });
 
 // app.get("/getSmallTasksByID", async (req, res) => {
@@ -61,6 +62,7 @@ app.put("/updateBigTask", async (req, res) => {
     console.log(err);
   }
   res.send("yessir");
+  console.log("updateBigTask")
 });
 
 app.post("/createBigTask", async (req, res) => {
@@ -68,12 +70,16 @@ app.post("/createBigTask", async (req, res) => {
   const newBigTask = await new BigTaskModel(BigTask);
   await newBigTask.save();
   res.json(newBigTask._id);
+  console.log("createBigTask")
+
 });
 
 app.delete("/deleteBigTask/:id", async (req, res) => {
   const id = req.params.id;
   await BigTaskModel.findByIdAndRemove(id).exec();
   res.send("deleted item");
+  console.log("deleteBigTask")
+
 });
 
 app.put("/addSmallTask", async (req, res) => {
